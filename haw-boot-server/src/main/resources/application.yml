@@ -11,6 +11,7 @@ server:
   # url前缀
   servlet:
     context-path: /haw-api
+
 spring:
   application:
     name: haw-server
@@ -29,6 +30,7 @@ spring:
       test-while-idle: true
       test-on-borrow: false
       test-on-return: false
+
   # redis数据源配置
   redis:
     database: 0
@@ -50,6 +52,7 @@ spring:
       authentication-database: admin
       username: xiguapi
       password: xiguapi777
+
 # MyBatis配置
 mybatis:
   mapper-locations:
@@ -58,6 +61,7 @@ mybatis:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     map-underscore-to-camel-case: true
+
 # 配置日志输出
 logging:
   level:
@@ -65,3 +69,9 @@ logging:
     cloud.xiguapi.haw.db.mapper: warn
   pattern:
     console: "%d{HH:mm:ss} %-5level %msg%n"
+
+haw:
+  jwt:
+    secret: xiguapi777
+    expire: 5
+    cache-expire: 10
