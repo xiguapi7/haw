@@ -1,6 +1,7 @@
 package cloud.xiguapi.haw.common;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.apache.http.HttpStatus;
 
 import java.io.Serializable;
@@ -15,6 +16,7 @@ import java.util.Map;
  * date: 2021-6-2 下午 02:31
  * desc:
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
 public class R extends HashMap<String, Object> implements Serializable {
 
