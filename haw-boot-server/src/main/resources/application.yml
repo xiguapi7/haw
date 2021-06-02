@@ -19,7 +19,7 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://localhost:3306/haw?useUnicode=true&charcterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+      url: jdbc:mysql://localhost:3306/haw?useUnicode=true&charcterEncoding=utf8mb4&serverTimezone=Asia/Shanghai
       username: root
       password: 1015
       initial-size: 8
@@ -31,7 +31,7 @@ spring:
       test-on-return: false
   # redis数据源配置
   redis:
-    database: 1
+    database: 0
     host: localhost
     port: 6379
     password: xiguapi777
@@ -50,3 +50,18 @@ spring:
       authentication-database: admin
       username: xiguapi
       password: xiguapi777
+# MyBatis配置
+mybatis:
+  mapper-locations:
+    - classpath*:mapper/*.xml
+  type-aliases-package: cloud.xiguapi.haw.db.model
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+# 配置日志输出
+logging:
+  level:
+    root: info
+    cloud.xiguapi.haw.db.mapper: warn
+  pattern:
+    console: "%d{HH:mm:ss} %-5level %msg%n"
