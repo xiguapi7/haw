@@ -1,7 +1,7 @@
 package cloud.xiguapi.haw.controller;
 
 import cloud.xiguapi.haw.common.Form;
-import cloud.xiguapi.haw.common.util.R;
+import cloud.xiguapi.haw.common.R;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;

@@ -1,4 +1,4 @@
-package cloud.xiguapi.haw.common.util;
+package cloud.xiguapi.haw.common;
 
 import lombok.Data;
 import org.apache.http.HttpStatus;
