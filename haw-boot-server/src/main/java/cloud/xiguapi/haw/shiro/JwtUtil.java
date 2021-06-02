@@ -4,7 +4,7 @@ import cn.hutool.core.date.DateField;
 import cn.hutool.core.date.DateUtil;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
-import lombok.extern.slf4j.XSlf4j;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -19,7 +19,7 @@ import java.util.Date;
  * desc:
  */
 @Component
-@XSlf4j
+@Slf4j
 public class JwtUtil {
 
     @Value("${haw.jwt.secret}")
@@ -29,6 +29,7 @@ public class JwtUtil {
     private int expire;
 
     public String createToken(int userId) {
+        log.info("创建token, 参数: userId = {}", userId);
         var date = DateUtil.offset(new Date(), DateField.DAY_OF_YEAR, 5);
         var algorithm = Algorithm.HMAC256(secret);
         var builder = JWT.create();
@@ -36,11 +37,13 @@ public class JwtUtil {
     }
 
     public int getUserId(String token) {
+        log.info("根据token获取userId, 参数: token = {}", token);
         var jwt = JWT.decode(token);
         return jwt.getClaim("userId").asInt();
     }
 
     public void verifyToken(String token) {
+        log.info("验证token, 参数: token = {}", token);
         var algorithm = Algorithm.HMAC256(secret);
         var verifier = JWT.require(algorithm).build();
         verifier.verify(token);

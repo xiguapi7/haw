@@ -130,6 +130,12 @@
             <version>3.11</version>
         </dependency>
 
+        <!--Spring AOP支持-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+
         <!--开发测试等组件-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
