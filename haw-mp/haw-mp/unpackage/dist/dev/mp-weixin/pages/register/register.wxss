@@ -1,0 +1,38 @@
+.logo {
+  width: 70%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 80 rpx;
+}
+.register-container {
+  width: 70%;
+  margin-top: 150 rpx;
+  margin-left: auto;
+  margin-right: auto;
+}
+.register-container .register-code {
+  border: solid 1 rpx #e0e0e0;
+  font-size: 34 rpx;
+  color: #333;
+  text-align: center;
+  background-color: #f5f5f5;
+  border-radius: 10 rpx;
+  margin-bottom: 30 rpx;
+  height: 80 rpx;
+  padding: 0 20 rpx;
+}
+.register-container .register-desc {
+  color: #999;
+  font-size: 28 rpx;
+  line-height: 1.5;
+  margin-bottom: 80 rpx;
+}
+.register-container .register-btn {
+  background-color: #3474FF;
+  color: #fff;
+}
+.register-container .register-btn:active {
+  background-color: #0052FF;
+}
+

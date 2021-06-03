@@ -1,0 +1,44 @@
+@import url("../../style.less");
+
+.logo {
+  width: 70%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 80 rpx;
+}
+
+.register-container {
+  width: 70%;
+  margin-top: 150 rpx;
+  margin-left: auto;
+  margin-right: auto;
+
+  .register-code {
+    border: solid 1 rpx #e0e0e0;
+    font-size: 34 rpx;
+    color: @font-color;
+    text-align: center;
+    background-color: #f5f5f5;
+    border-radius: 10 rpx;
+    margin-bottom: 30 rpx;
+    height: 80 rpx;
+    padding: 0 20 rpx;
+  }
+
+  .register-desc {
+    color: @desc-color;
+    font-size: 28 rpx;
+    line-height: 1.5;
+    margin-bottom: 80 rpx;
+  }
+
+  .register-btn {
+    background-color: @background-color;
+    color: #fff;
+
+    &:active {
+      background-color: @background-color-active;
+    }
+  }
+}
