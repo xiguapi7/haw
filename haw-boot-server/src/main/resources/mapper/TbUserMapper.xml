@@ -74,7 +74,6 @@
         <if test="deptName != null">
             dept_id = ( SELECT id FROM tb_dept WHERE dept_name = #{deptName}),
         </if>
-        status = #{status},
-                create_time = #{createTime}
+        status = #{status}, create_time = #{createTime}
     </insert>
 </mapper>
