@@ -8,13 +8,11 @@ import lombok.NoArgsConstructor;
 import java.util.Date;
 
 /**
+ * 用户表
+ *
  * @author 大大大西西瓜皮🍉
  * date: 2021-6-2 下午 01:55
  * desc:
- */
-
-/**
- * 用户表
  */
 @Data
 @Builder
