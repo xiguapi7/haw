@@ -24,7 +24,8 @@ createApp(app).$mount();
 
 // 绑定网络请求接口地址
 _vue.default.prototype.url = {
-  register: baseUrl + '/user/register' };
+  register: "".concat(baseUrl, "/user/register"),
+  login: "".concat(baseUrl, "/user/login") };
 
 
 // 封装ajax, 参数分别为为请求地址、请求方法、请求参数、请求成功回调

@@ -15,7 +15,8 @@ app.$mount()
 
 // 绑定网络请求接口地址
 Vue.prototype.url = {
-    register: baseUrl + '/user/register',
+    register: `${baseUrl}/user/register`,
+    login: `${baseUrl}/user/login`
 }
 
 // 封装ajax, 参数分别为为请求地址、请求方法、请求参数、请求成功回调

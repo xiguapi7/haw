@@ -15,16 +15,16 @@
     export default {
         data() {
             return {
-                registerCode: ""
+                registerCode: ''
             }
         },
         methods: {
             // 注册
             register() {
                 let that = this
-                
+
                 // 校验邀请码
-                if(that.registerCode === null || that.registerCode.length === 0) {
+                if (that.registerCode === null || that.registerCode.length === 0) {
                     uni.showToast({
                         icon: 'none',
                         title: '邀请码不能为空'
@@ -32,14 +32,14 @@
                     return
                 }
                 // 校验邀请码
-                if(/^[0-9]{6}$/.test(that.registerCode) === false) {
+                if (/^[0-9]{6}$/.test(that.registerCode) === false) {
                     uni.showToast({
                         icon: 'none',
                         title: '邀请码必须是6位数字'
                     })
                     return
                 }
-                
+
                 // 封装请求参数
                 let data = {
                     code: '',
@@ -47,7 +47,7 @@
                     photo: '',
                     registerCode: that.registerCode
                 }
-                
+
                 uni.getUserProfile({
                     desc: '信息仅用于绑定用户',
                     lang: 'zh_CN',
@@ -55,13 +55,13 @@
                         data.nickname = user.userInfo.nickName
                         data.photo = user.userInfo.avatarUrl
                         console.log(user.userInfo)
-                        
+
                         uni.login({
                             provider: 'weixin',
                             success: (resp) => {
                                 data.code = resp.code
                                 console.log('data.code: ', data.code)
-                                
+
                                 // 提交请求
                                 that.ajax(that.url.register, 'POST', data, function(resp) {
                                     let permission = resp.data.permission

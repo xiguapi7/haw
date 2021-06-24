@@ -160,6 +160,28 @@ var _default =
   },
   methods: {
     login: function login() {
+      var that = this;
+      uni.login({
+        provider: 'weixin',
+        success: function success(resp) {
+          var code = resp.code;
+          that.ajax(that.url.login, 'POST', {
+            code: code },
+          function (resp) {
+            var permission = resp.data.permission;
+            uni.setStorageSync('permission', permission);
+            console.log('login success');
+            // TODO 跳转到登录页面
+          });
+        },
+        fail: function fail(e) {
+          console.log(e);
+          uni.showToast({
+            icon: 'none',
+            title: '执行异常' });
+
+        } });
+
     },
     toRegister: function toRegister() {
       uni.navigateTo({

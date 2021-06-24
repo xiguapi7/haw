@@ -147,7 +147,7 @@ var _default =
 {
   data: function data() {
     return {
-      registerCode: "" };
+      registerCode: '' };
 
   },
   methods: {
