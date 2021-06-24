@@ -1,6 +1,7 @@
 package cloud.xiguapi.haw.controller;
 
 import cloud.xiguapi.haw.common.R;
+import cloud.xiguapi.haw.model.LoginForm;
 import cloud.xiguapi.haw.model.RegisterForm;
 import cloud.xiguapi.haw.service.UserService;
 import cloud.xiguapi.haw.shiro.Jwt;
@@ -50,6 +51,18 @@ public class UserController {
         this.userService = userService;
         this.jwt = jwt;
         this.redisTemplate = redisTemplate;
+    }
+
+    @PostMapping("/login")
+    @ApiOperation("登录系统")
+    public R login(@Valid @RequestBody LoginForm form) {
+        var id = userService.login(form.getCode());
+        var token = jwt.createToken(id);
+        var permissions = userService.searchUserPermissions(id);
+        saveCacheToken(token, id);
+        return R.ok("登录成功")
+                .put("token", token)
+                .put("permission", permissions);
     }
 
     /**

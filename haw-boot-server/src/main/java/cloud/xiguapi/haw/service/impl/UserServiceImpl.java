@@ -143,6 +143,15 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Integer login(String code) {
-        return null;
+        // 临时授权字符串换取openId
+        String openId = getOpenId(code);
+        Integer id = userMapper.searchIdByOpenId(openId);
+        if (id == null) {
+            throw new HawException("账号不存在");
+        }
+
+        // TODO 从消息队列中接收消息, 并转移到消息列表中
+
+        return id;
     }
 }
