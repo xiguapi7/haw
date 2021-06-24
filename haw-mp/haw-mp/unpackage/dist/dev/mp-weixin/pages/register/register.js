@@ -198,7 +198,11 @@ var _default =
               that.ajax(that.url.register, 'POST', data, function (resp) {
                 var permission = resp.data.permission;
                 uni.setStorageSync('permission', permission);
-                // TODO 跳转到index页面
+
+                // 跳转首页, 跳转包含tabBar的页面需要使用switchTab
+                uni.switchTab({
+                  url: '../index/index' });
+
               });
             } });
 

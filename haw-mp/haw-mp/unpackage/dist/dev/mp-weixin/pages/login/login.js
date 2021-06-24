@@ -171,7 +171,11 @@ var _default =
             var permission = resp.data.permission;
             uni.setStorageSync('permission', permission);
             console.log('login success');
-            // TODO 跳转到登录页面
+
+            // 跳转首页, 跳转包含tabBar的页面需要使用switchTab
+            uni.switchTab({
+              url: '../index/index' });
+
           });
         },
         fail: function fail(e) {
