@@ -18,9 +18,9 @@ import java.util.Date;
  * date: 2021-6-2 下午 09:56
  * desc:
  */
-@Component
+@Component("jwt")
 @Slf4j
-public class JwtUtil {
+public class Jwt {
 
     @Value("${haw.jwt.secret}")
     private String secret;

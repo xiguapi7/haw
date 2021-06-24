@@ -28,3 +28,6 @@ target/
 logs/
 log/
 .jpb
+
+unpackage/
+.hbuilderx

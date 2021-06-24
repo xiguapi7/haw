@@ -21,8 +21,8 @@ spring:
     druid:
       driver-class-name: com.mysql.cj.jdbc.Driver
       url: jdbc:mysql://localhost:3306/haw?useUnicode=true&charcterEncoding=utf8mb4&serverTimezone=Asia/Shanghai
-      username: root
-      password: 1015
+      username: xiguapi
+      password: xiguapi777@!#
       initial-size: 8
       max-active: 16
       min-idle: 8
@@ -51,7 +51,7 @@ spring:
       database: haw
       authentication-database: admin
       username: xiguapi
-      password: xiguapi777
+      password: xiguapi777@!#
 
 # MyBatis配置
 mybatis:
@@ -70,8 +70,14 @@ logging:
   pattern:
     console: "%d{HH:mm:ss} %-5level %msg%n"
 
+# JWT配置
 haw:
   jwt:
     secret: xiguapi777
     expire: 5
     cache-expire: 10
+
+# 微信配置
+wx:
+  app-id: wx9296a63526261a88
+  app-secret: a34dfe8c4c097b404ce371e20fb85cc4

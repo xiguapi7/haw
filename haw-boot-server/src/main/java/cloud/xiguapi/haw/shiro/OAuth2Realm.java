@@ -9,9 +9,8 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import javax.annotation.Resource;
 
 /**
  * 令牌认证与授权类
@@ -26,8 +25,12 @@ import javax.annotation.Resource;
 @Slf4j
 public class OAuth2Realm extends AuthorizingRealm {
 
-    @Resource(name = "jwtUtil")
-    private JwtUtil jwtUtil;
+    private final Jwt jwt;
+
+    @Autowired
+    public OAuth2Realm(final Jwt jwt) {
+        this.jwt = jwt;
+    }
 
     @Override
     public boolean supports(AuthenticationToken token) {

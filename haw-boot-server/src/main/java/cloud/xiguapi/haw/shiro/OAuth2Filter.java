@@ -39,18 +39,21 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class OAuth2Filter extends AuthenticatingFilter {
 
-    @Autowired
-    private ThreadLocalToken threadLocalToken;
+    private final ThreadLocalToken threadLocalToken;
 
     @Value("${haw.jwt.cache-expire}")
     private int cacheExpire;
 
-    @Autowired
-    private JwtUtil jwt;
+    private final Jwt jwt;
+
+    private final RedisTemplate<String, String> redisTemplate;
 
     @Autowired
-    private RedisTemplate<String, String> redisTemplate;
-
+    public OAuth2Filter(ThreadLocalToken threadLocalToken, Jwt jwt, RedisTemplate<String, String> redisTemplate) {
+        this.threadLocalToken = threadLocalToken;
+        this.jwt = jwt;
+        this.redisTemplate = redisTemplate;
+    }
 
     @Override
     protected AuthenticationToken createToken(final ServletRequest request, final ServletResponse response) throws Exception {
