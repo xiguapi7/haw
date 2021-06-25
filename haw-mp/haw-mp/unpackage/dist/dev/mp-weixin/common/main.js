@@ -13,7 +13,8 @@ var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ 5));function 
 _vue.default.config.productionTip = false;
 
 // 后台接口地址
-var baseUrl = 'http://localhost:9000/haw-api';
+// const baseUrl = 'http://10.10.10.10:9000/haw-api'
+var baseUrl = 'http://192.168.2.232:9000/haw-api';
 
 _App.default.mpType = 'app';
 

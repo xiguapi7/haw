@@ -4,7 +4,8 @@ import App from './App'
 Vue.config.productionTip = false
 
 // 后台接口地址
-const baseUrl = 'http://localhost:9000/haw-api'
+// const baseUrl = 'http://10.10.10.10:9000/haw-api'
+const baseUrl = 'http://192.168.2.232:9000/haw-api'
 
 App.mpType = 'app'
 

@@ -106,7 +106,13 @@
         onLoad() {
 
         },
-        methods: {}
+        methods: {
+            toPage(name, url) {
+                uni.navigateTo({
+                    url
+                })
+            }
+        }
     }
 </script>
 

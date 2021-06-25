@@ -11,5 +11,4 @@ package cloud.xiguapi.haw.service;
  */
 public interface SysConfigService {
 
-
 }
