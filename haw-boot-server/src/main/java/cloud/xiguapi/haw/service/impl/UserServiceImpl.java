@@ -1,6 +1,7 @@
 package cloud.xiguapi.haw.service.impl;
 
 import cloud.xiguapi.haw.db.mapper.TbUserMapper;
+import cloud.xiguapi.haw.db.model.TbUser;
 import cloud.xiguapi.haw.exception.HawException;
 import cloud.xiguapi.haw.service.UserService;
 import cn.hutool.http.HttpUtil;
@@ -153,5 +154,10 @@ public class UserServiceImpl implements UserService {
         // TODO 从消息队列中接收消息, 并转移到消息列表中
 
         return id;
+    }
+
+    @Override
+    public TbUser searchById(int userId) {
+        return userMapper.searchById(userId);
     }
 }

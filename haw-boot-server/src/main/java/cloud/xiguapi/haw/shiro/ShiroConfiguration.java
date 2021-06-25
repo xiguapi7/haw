@@ -53,7 +53,8 @@ public class ShiroConfiguration {
         filterMap.put("/captcha.jpg", "anon");
         filterMap.put("/user/register", "anon");
         filterMap.put("/user/login", "anon");
-        filterMap.put("/test/**", "anon");
+        // filterMap.put("/test/**", "anon");
+        filterMap.put("/test/**", "oauth2");
         filterMap.put("/meeting/receiveNotify", "anon");
         filterMap.put("/**", "oauth2");
 

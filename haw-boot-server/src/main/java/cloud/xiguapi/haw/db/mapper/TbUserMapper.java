@@ -1,5 +1,7 @@
 package cloud.xiguapi.haw.db.mapper;
 
+import cloud.xiguapi.haw.db.model.TbUser;
+
 import java.util.HashMap;
 import java.util.Set;
 
@@ -44,4 +46,12 @@ public interface TbUserMapper {
      * @return 权限集合
      */
     Set<String> searchUserPermissions(int userId);
+
+    /**
+     * 根据主键查询用户信息
+     *
+     * @param userId 用户ID
+     * @return 用户信息实体
+     */
+    TbUser searchById(int userId);
 }

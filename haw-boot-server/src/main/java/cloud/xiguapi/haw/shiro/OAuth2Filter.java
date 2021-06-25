@@ -1,7 +1,6 @@
 package cloud.xiguapi.haw.shiro;
 
 import cn.hutool.core.text.CharSequenceUtil;
-import com.auth0.jwt.exceptions.JWTDecodeException;
 import com.auth0.jwt.exceptions.TokenExpiredException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpStatus;
@@ -130,7 +129,7 @@ public class OAuth2Filter extends AuthenticatingFilter {
                 resp.getWriter().println("令牌已过期");
                 return false;
             }
-        } catch (JWTDecodeException e) {
+        } catch (Exception e) {
             resp.setStatus(HttpStatus.SC_UNAUTHORIZED);
             resp.getWriter().println("无效的令牌");
             return false;

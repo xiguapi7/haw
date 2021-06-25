@@ -1,6 +1,6 @@
 package cloud.xiguapi.haw.db.mapper;
 
-import cloud.xiguapi.haw.db.model.TbCheckin;
+import java.util.HashMap;
 
 /**
  * @author 大大大西西瓜皮🍉
@@ -8,15 +8,6 @@ import cloud.xiguapi.haw.db.model.TbCheckin;
  * desc:
  */
 public interface TbCheckinMapper {
-    int deleteByPrimaryKey(Integer id);
 
-    int insert(TbCheckin record);
-
-    int insertSelective(TbCheckin record);
-
-    TbCheckin selectByPrimaryKey(Integer id);
-
-    int updateByPrimaryKeySelective(TbCheckin record);
-
-    int updateByPrimaryKey(TbCheckin record);
+    Integer haveCheckin(HashMap<String, Object> map);
 }

@@ -1,16 +1,17 @@
 package cloud.xiguapi.haw.shiro;
 
+import cloud.xiguapi.haw.db.model.TbUser;
+import cloud.xiguapi.haw.service.UserService;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.AuthenticationInfo;
-import org.apache.shiro.authc.AuthenticationToken;
-import org.apache.shiro.authc.SimpleAuthenticationInfo;
+import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.Set;
 
 /**
  * 令牌认证与授权类
@@ -27,9 +28,12 @@ public class OAuth2Realm extends AuthorizingRealm {
 
     private final Jwt jwt;
 
+    private final UserService userService;
+
     @Autowired
-    public OAuth2Realm(final Jwt jwt) {
+    public OAuth2Realm(final Jwt jwt, UserService userService) {
         this.jwt = jwt;
+        this.userService = userService;
     }
 
     @Override
@@ -38,7 +42,7 @@ public class OAuth2Realm extends AuthorizingRealm {
     }
 
     /**
-     * 认证（登录时调用）
+     * 认证（验证登录时调用）
      *
      * @param token 令牌封装对象
      * @return 认证信息对象
@@ -46,24 +50,35 @@ public class OAuth2Realm extends AuthorizingRealm {
      */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
-        // TODO 从令牌中获取userId, 然后检测该账号是否被冻结
-        var info = new SimpleAuthenticationInfo();
-        // TODO 往info对象中添加用户信息、Token字符串
-        return info;
+        var accessToken = (String) token.getPrincipal();
+        int userId = jwt.getUserId(accessToken);
+        // 查询用户信息
+        var user = userService.searchById(userId);
+        if (user == null) {
+            throw new LockedAccountException("账号已被锁定, 请联系管理员");
+        }
+
+        // 往info对象中添加用户信息、Token字符串
+        return new SimpleAuthenticationInfo(user, accessToken, getName());
     }
 
     /**
      * 授权（验证权限时调用）
+     * 授权方法在认证方法通过后自动执行
      *
-     * @param principals
+     * @param collection 认证对象
      * @return 验证信息
      */
     @Override
-    protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-        var info = new SimpleAuthorizationInfo();
+    protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection collection) {
+        var user = (TbUser) collection.getPrimaryPrincipal();
+        int userId = user.getId();
+        // 查询用户权限列表
+        Set<String> permissions = userService.searchUserPermissions(userId);
 
-        // TODO 查询用户的权限列表
-        // TODO 把权限列表添加到info对象中
+        var info = new SimpleAuthorizationInfo();
+        // 把权限列表添加到info对象中
+        info.setStringPermissions(permissions);
 
         return info;
     }

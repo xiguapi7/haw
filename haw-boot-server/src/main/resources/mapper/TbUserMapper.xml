@@ -52,6 +52,27 @@
           AND u.status = 1;
     </select>
 
+    <!--查询用户信息-->
+    <select id="searchById" parameterType="int" resultType="TbUser">
+        SELECT id,
+               open_id,
+               nickname,
+               photo,
+               name,
+               sex,
+               tel,
+               email,
+               hiredate,
+               role,
+               root,
+               dept_id,
+               status,
+               create_time
+        FROM tb_user tu
+        WHERE id = #{userId}
+          AND status = 1;
+    </select>
+
     <!--插入员工信息, INSERT语句使用了MySQL方言-->
     <insert id="insert" parameterType="HashMap">
         INSERT INTO tb_user

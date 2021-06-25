@@ -1,5 +1,7 @@
 package cloud.xiguapi.haw.service;
 
+import cloud.xiguapi.haw.db.model.TbUser;
+
 import java.util.Set;
 
 /**
@@ -39,4 +41,12 @@ public interface UserService {
      * @return 用户主键
      */
     Integer login(String code);
+
+    /**
+     * 根据用户主键查询用户信息
+     *
+     * @param userId 用户主键
+     * @return 用户信息
+     */
+    TbUser searchById(int userId);
 }
